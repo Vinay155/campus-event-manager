@@ -21,6 +21,7 @@ app.get("/", (req, res) => {
   res.send("Campus Event Manager API Running");
 });
 app.use("/api/events", require("./routes/eventRoutes"));
+app.use("/api/auth", require("./routes/authRoutes"));
 
 const PORT = process.env.PORT || 5000;
 
