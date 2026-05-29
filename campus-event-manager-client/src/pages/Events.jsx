@@ -12,8 +12,15 @@ function Events() {
 
   const fetchEvents = async () => {
     try {
+      const token = localStorage.getItem("token");
+
       const response = await axios.get(
-        "http://localhost:5000/api/events"
+        "http://localhost:5000/api/events",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
 
       setEvents(response.data);
@@ -26,8 +33,15 @@ function Events() {
 
   const deleteEvent = async (id) => {
     try {
+      const token = localStorage.getItem("token");
+
       await axios.delete(
-        `http://localhost:5000/api/events/${id}`
+        `http://localhost:5000/api/events/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
 
       fetchEvents();
